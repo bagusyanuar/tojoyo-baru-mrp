@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('unit_id')->unsigned();
+//            $table->bigInteger('unit_id')->unsigned();
             $table->string('name');
             $table->integer('qty')->default(0);
+            $table->string('unit');
             $table->timestamps();
-            $table->foreign('unit_id')->references('id')->on('units');
+//            $table->foreign('unit_id')->references('id')->on('units');
         });
     }
 
