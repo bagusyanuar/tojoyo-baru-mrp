@@ -19,4 +19,9 @@ class Product extends Model
         return $this->hasMany(ProductMaterial::class, 'product_id');
     }
 
+    public function getCountRecipeAttribute()
+    {
+        return $this->product_material()->count();
+    }
+
 }

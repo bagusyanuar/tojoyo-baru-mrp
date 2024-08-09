@@ -32,6 +32,13 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         Route::match(['post', 'get'],'/{id}/material', [\App\Http\Controllers\ProductController::class, 'product_material']);
     });
 
+    Route::group(['prefix' => 'recipe'], function () {
+        Route::match(['post', 'get'],'/', [\App\Http\Controllers\RecipeController::class, 'index']);
+        Route::match(['post', 'get'],'/{id}', [\App\Http\Controllers\RecipeController::class, 'findByID']);
+        Route::delete('/{id}/delete', [\App\Http\Controllers\RecipeController::class, 'destroy']);
+        Route::match(['post', 'get'],'/{id}/material', [\App\Http\Controllers\RecipeController::class, 'product_material']);
+    });
+
     Route::group(['prefix' => 'material-in'], function () {
         Route::match(['post', 'get'],'/', [\App\Http\Controllers\MaterialInController::class, 'index']);
     });
