@@ -70,6 +70,7 @@ class MaterialInController extends CustomController
     {
         try {
             DB::beginTransaction();
+            $userID = auth()->id();
             $date = $this->postField('date');
             $materialID = $this->postField('material_id');
             $qty = (int)$this->postField('qty');
@@ -90,6 +91,7 @@ class MaterialInController extends CustomController
             ]);
 
             $data_request = [
+                'user_id' => $userID,
                 'date' => $date,
                 'material_id' => $materialID,
                 'qty' => $qty

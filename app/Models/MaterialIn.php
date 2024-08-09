@@ -12,6 +12,7 @@ class MaterialIn extends Model
     protected $table = 'material_ins';
 
     protected $fillable = [
+        'user_id',
         'date',
         'material_id',
         'qty'
@@ -20,5 +21,10 @@ class MaterialIn extends Model
     public function material()
     {
         return $this->belongsTo(Material::class, 'material_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

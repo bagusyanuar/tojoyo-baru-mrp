@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
+Route::get('/check-mrp/{id}', [\App\Http\Controllers\MRPController::class, 'getMRPResult']);
 Route::group(['middleware' => ['jwt.verify']], function () {
 
     Route::group(['prefix' => 'material'], function () {
