@@ -43,4 +43,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::group(['prefix' => 'material-in'], function () {
         Route::match(['post', 'get'],'/', [\App\Http\Controllers\MaterialInController::class, 'index']);
     });
+
+    Route::group(['prefix' => 'product-out'], function () {
+        Route::match(['post', 'get'],'/', [\App\Http\Controllers\ProductOutController::class, 'index']);
+    });
+
+    Route::group(['prefix' => 'material-in-report'], function () {
+        Route::match(['post', 'get'],'/', [\App\Http\Controllers\ReportMaterialInController::class, 'index']);
+    });
+
+    Route::group(['prefix' => 'product-out-report'], function () {
+        Route::match(['post', 'get'],'/', [\App\Http\Controllers\ReportProductOutController::class, 'index']);
+    });
 });

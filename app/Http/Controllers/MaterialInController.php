@@ -24,9 +24,10 @@ class MaterialInController extends CustomController
             return $this->store();
         }
         try {
+            $date = $this->field('date');
             $now = Carbon::now()->format('Y-m-d');
             $data = MaterialIn::with(['material'])
-                ->where('date', '=', $now)
+                ->where('date', '=', $date)
                 ->orderBy('created_at', 'DESC')
                 ->get();
             return $this->jsonSuccessResponse('success', $data);
