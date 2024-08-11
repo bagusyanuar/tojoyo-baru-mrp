@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
-Route::get('/check-mrp/{id}', [\App\Http\Controllers\MRPController::class, 'getMRPResult']);
+//Route::get('/check-mrp/{id}', [\App\Http\Controllers\MRPController::class, 'getMRPResult']);
 Route::group(['middleware' => ['jwt.verify']], function () {
 
     Route::group(['prefix' => 'material'], function () {
@@ -38,6 +38,10 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         Route::match(['post', 'get'],'/{id}', [\App\Http\Controllers\RecipeController::class, 'findByID']);
         Route::delete('/{id}/delete', [\App\Http\Controllers\RecipeController::class, 'destroy']);
         Route::match(['post', 'get'],'/{id}/material', [\App\Http\Controllers\RecipeController::class, 'product_material']);
+    });
+
+    Route::group(['prefix' => 'mrp'], function () {
+        Route::match(['post', 'get'],'/', [\App\Http\Controllers\MRPController::class, 'getMRPResult']);
     });
 
     Route::group(['prefix' => 'material-in'], function () {
